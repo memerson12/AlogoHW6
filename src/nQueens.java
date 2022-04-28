@@ -50,9 +50,6 @@ public class nQueens {
             if ((board[i] - diff == newPosition
                     || board[i] + diff == newPosition
                     || board[i] == newPosition)) {
-//                System.out.println(board[i] - diff == newPosition);
-//                System.out.println(board[i] + diff == newPosition);
-//                System.out.println(board[i] == newPosition);
                 return false;
             }
         }
@@ -71,7 +68,7 @@ public class nQueens {
             if (board[newPositionIndex] == n - 1) return new int[n];
             board[newPositionIndex]++;
             nextLegalPosition(board, n);
-        } else { //if (newPositionIndex != n - 1) {
+        } else {
             if (newPositionIndex != n - 1) {
                 newPositionIndex++;
                 board[newPositionIndex] = 1;
@@ -94,16 +91,6 @@ public class nQueens {
             }
             return board;
         }
-//        else {
-//            System.out.println("here");
-//            while (!isLegalPosition(board, n) && newPositionIndex >= 0) {
-//                if (board[newPositionIndex] >= n - 1) {
-//                    board[newPositionIndex] = 0;
-//                    newPositionIndex--;
-//                }
-//                board[newPositionIndex]++;
-//            }
-//        }
         return board;
     }
 }
