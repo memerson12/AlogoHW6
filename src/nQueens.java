@@ -2,33 +2,51 @@ import java.util.Arrays;
 
 public class nQueens {
     public static void main(String[] args) {
-        int n = 14;
+        int n = 5;
         int[] board = new int[n];
-//        System.out.println(isLegalPosition(board, board.length));
-        int temp = 0;
-        while(board[n-1] == 0) {
-//            System.out.println("-----------NEW CALL-----------");
-            board = nextLegalPosition(board, n);
-            temp++;
-//            if(temp>10)break;
-        }
+        board[0] = 1;
+        while (n < 15) {
+            System.out.println("Solution for n = " + n + ": ");
+            while (board[n - 1] == 0) {
+                board = nextLegalPosition(board, n);
+            }
             System.out.println(Arrays.toString(board));
+            n++;
+            board = new int[n];
+            System.out.println("--------------------");
+        }
+
+        n = 4;
+        int count = 0;
+        while (n < 15) {
+            while (board[n - 1] == 0 && !Arrays.equals(board, new int[n])) {
+                board = nextLegalPosition(board, n);
+            }
+            if (Arrays.equals(board, new int[n])) {
+                System.out.println("There are " + count + " solutions to the " + n + "-Queens problems.");
+                count = 0;
+                n++;
+                board = new int[n];
+                board[0] = 1;
+                continue;
+            }
+            count++;
+            board = nextLegalPosition(board, n);
+        }
     }
 
     static boolean isLegalPosition(int[] board, int n) {
         int newPositionIndex = n - 1;
         for (int i = 0; i < n; i++) {
             if (board[i] == 0) {
-                newPositionIndex = i-1;
+                newPositionIndex = i - 1;
                 break;
             }
         }
-        if(board[0] == 0) return true;
-//        System.out.println("newPositionIndex = " + newPositionIndex);
+        if (board[0] == 0) return true;
         int newPosition = board[newPositionIndex];
         for (int i = 0; i < newPositionIndex; i++) {
             int diff = newPositionIndex - i;
-//            System.out.println("i: " + i + " board[i]: " + board[i]);
             if ((board[i] - diff == newPosition
                     || board[i] + diff == newPosition
                     || board[i] == newPosition)) {
@@ -45,42 +63,47 @@ public class nQueens {
         int newPositionIndex = n - 1;
         for (int i = 0; i < n; i++) {
             if (board[i] == 0) {
-                newPositionIndex = i-1;
+                newPositionIndex = i - 1;
                 break;
             }
         }
         if (!isLegalPosition(board, n)) {
-//            System.out.println("a " + newPositionIndex);
             if (board[newPositionIndex] == n - 1) return new int[n];
-//            System.out.println("b");
             board[newPositionIndex]++;
             nextLegalPosition(board, n);
-        } else if (newPositionIndex != n - 1) {
-//            System.out.println(1);
-            newPositionIndex++;
-            board[newPositionIndex] = 1;
+        } else { //if (newPositionIndex != n - 1) {
+            if (newPositionIndex != n - 1) {
+                newPositionIndex++;
+                board[newPositionIndex] = 1;
+            } else if (board[newPositionIndex] >= n) {
+                board[newPositionIndex] = 0;
+                newPositionIndex--;
+                board[newPositionIndex]++;
+            } else {
+                board[newPositionIndex]++;
+            }
             while (!isLegalPosition(board, n)) {
-//                System.out.println(Arrays.toString(board) + " was not legal");
                 if (board[newPositionIndex] >= n) {
                     do {
                         board[newPositionIndex] = 0;
                         newPositionIndex--;
-                    } while(newPositionIndex >= 0 && board[newPositionIndex] >= n);
+                    } while (newPositionIndex >= 0 && board[newPositionIndex] >= n);
                 }
+                if (newPositionIndex < 0) return new int[n];
                 board[newPositionIndex]++;
-//                System.out.println("Checking if " + Arrays.toString(board) + " is legal");
             }
             return board;
-        } else {
-            System.out.println("here");
-            while (!isLegalPosition(board, n) && newPositionIndex >= 0) {
-                if (board[newPositionIndex] >= n - 1) {
-                    board[newPositionIndex] = 0;
-                    newPositionIndex--;
-                }
-                board[newPositionIndex]++;
-            }
         }
+//        else {
+//            System.out.println("here");
+//            while (!isLegalPosition(board, n) && newPositionIndex >= 0) {
+//                if (board[newPositionIndex] >= n - 1) {
+//                    board[newPositionIndex] = 0;
+//                    newPositionIndex--;
+//                }
+//                board[newPositionIndex]++;
+//            }
+//        }
         return board;
     }
 }
