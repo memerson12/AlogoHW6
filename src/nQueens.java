@@ -33,8 +33,8 @@ public class nQueens {
             count++;
             board = nextLegalPosition(board, n);
         }
-        System.out.println("See text file 'Solutions.txt' for solutions where n is 4-36");
-        System.out.println("See text file 'SolutionCounts.txt' for solution counts where n is 4-36");
+        System.out.println("\nSee text file 'Solutions.txt' for solutions where n is 4-36");
+        System.out.println("See text file 'SolutionCounts.txt' for solution counts where n is 4-17");
     }
 
     static boolean isLegalPosition(int[] board, int n) {
