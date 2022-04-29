@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class nQueens {
     public static void main(String[] args) {
-        int n = 5;
+        int n = 4;
         int[] board = new int[n];
         board[0] = 1;
         while (n < 15) {
@@ -18,7 +18,7 @@ public class nQueens {
 
         n = 4;
         int count = 0;
-        while (n < 15) {
+        while (n < 13) {
             while (board[n - 1] == 0 && !Arrays.equals(board, new int[n])) {
                 board = nextLegalPosition(board, n);
             }
@@ -33,6 +33,8 @@ public class nQueens {
             count++;
             board = nextLegalPosition(board, n);
         }
+        System.out.println("See text file 'Solutions.txt' for solutions where n is 4-36");
+        System.out.println("See text file 'SolutionCounts.txt' for solution counts where n is 4-36");
     }
 
     static boolean isLegalPosition(int[] board, int n) {
