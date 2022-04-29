@@ -11,3 +11,4 @@ There are 73712 solutions to the 13-Queens problems.
 There are 365596 solutions to the 14-Queens problems.
 There are 2279184 solutions to the 15-Queens problems.
 There are 14772512 solutions to the 16-Queens problems.
+There are 95815104 solutions to the 17-Queens problems.
