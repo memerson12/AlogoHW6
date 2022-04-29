@@ -1,0 +1,13 @@
+There are 2 solutions to the 4-Queens problems.
+There are 10 solutions to the 5-Queens problems.
+There are 4 solutions to the 6-Queens problems.
+There are 40 solutions to the 7-Queens problems.
+There are 92 solutions to the 8-Queens problems.
+There are 352 solutions to the 9-Queens problems.
+There are 724 solutions to the 10-Queens problems.
+There are 2680 solutions to the 11-Queens problems.
+There are 14200 solutions to the 12-Queens problems.
+There are 73712 solutions to the 13-Queens problems.
+There are 365596 solutions to the 14-Queens problems.
+There are 2279184 solutions to the 15-Queens problems.
+There are 14772512 solutions to the 16-Queens problems.
